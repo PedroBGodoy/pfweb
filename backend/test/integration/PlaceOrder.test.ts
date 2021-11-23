@@ -24,36 +24,9 @@ test("Deve fazer um pedido", async function () {
     });
     const placeOrder = new PlaceOrder(repositoryFactory);
     const output = await placeOrder.execute(input);
-    expect(output.total).toBe(5982);
+    expect(output.total).toBe(7090);
 });
 
-test("Deve fazer um pedido com cupom de desconto expirado", async function () {
-    const input = new PlaceOrderInput({
-        cpf: "778.278.412-36",
-        items: [
-            { idItem: 1, quantity: 2},
-            { idItem: 2, quantity: 1},
-            { idItem: 3, quantity: 3}
-        ],
-    });
-    const placeOrder = new PlaceOrder(repositoryFactory);
-    const output = await placeOrder.execute(input);
-    expect(output.total).toBe(7400);
-});
-
-test("Deve fazer um pedido com cálculo de frete", async function () {
-    const input = new PlaceOrderInput({
-        cpf: "778.278.412-36",
-        items: [
-            { idItem: 1, quantity: 2},
-            { idItem: 2, quantity: 1},
-            { idItem: 3, quantity: 3}
-        ],
-    });
-    const placeOrder = new PlaceOrder(repositoryFactory);
-    const output = await placeOrder.execute(input);
-    expect(output.freight).toBe(310);
-});
 
 test("Deve fazer um pedido calculando o código", async function () {
     const input = new PlaceOrderInput({

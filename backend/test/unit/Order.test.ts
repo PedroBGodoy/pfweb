@@ -1,5 +1,10 @@
 import Order from "../../src/domain/entity/Order";
 
+test("Não deve criar um pedido com CPF inválido", function () {
+    const cpf = "111.111.111-11";
+    expect(() => new Order(cpf)).toThrow(new Error("Invalid CPF"));
+});
+
 test("Deve criar um pedido com 3 itens", function () {
     const cpf = "778.278.412-36";
     const order = new Order(cpf);
