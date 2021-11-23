@@ -1,3 +1,5 @@
+import { cpf } from 'cpf-cnpj-validator'
+
 export default class Cpf {
     value: string;
 
@@ -6,7 +8,7 @@ export default class Cpf {
         this.value = value;
     }
     
-    validate(cpf = "") {
-        return true
+    validate(value = "") {
+        return cpf.isValid(value)
     }
 }
