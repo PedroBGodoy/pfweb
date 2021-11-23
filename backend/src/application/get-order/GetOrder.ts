@@ -26,7 +26,6 @@ export default class GetOrder {
         }
         return new GetOrderOutput({
             code: order.code.value,
-            freight: order.freight,
             total: order.getTotal(),
             orderItems
         });
