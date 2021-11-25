@@ -1,10 +1,40 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import ItemCard from '../components/item-card'
+import type { NextPage } from "next";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import ItemCard from "../components/item-card";
+import Cart from "../components/cart";
 
 const Home: NextPage = () => {
+  const products = [
+    {
+      id: 1,
+      description: "Guitarra",
+      price: "1000",
+      width: 100,
+      height: 50,
+      length: 15,
+      weight: 3,
+    },
+    {
+      id: 2,
+      description: "Amplificador",
+      price: "5000",
+      width: 50,
+      height: 50,
+      length: 50,
+      weight: 22,
+    },
+    {
+      id: 3,
+      description: "Cabo",
+      price: "30",
+      width: 10,
+      height: 10,
+      length: 10,
+      weight: 1,
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,25 +44,20 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>Hello</h1>
-
-        <ItemCard></ItemCard>
+        <Cart />
+        <div className={styles.grid}>
+          {products.map((p) => (
+            <ItemCard
+              key={p.id}
+              productId={p.id}
+              productName={p.description}
+              productPrice={Number(p.price)}
+            />
+          ))}
+        </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
