@@ -10,28 +10,16 @@ const Home: NextPage = () => {
       id: 1,
       description: "Guitarra",
       price: "1000",
-      width: 100,
-      height: 50,
-      length: 15,
-      weight: 3,
     },
     {
       id: 2,
       description: "Amplificador",
       price: "5000",
-      width: 50,
-      height: 50,
-      length: 50,
-      weight: 22,
     },
     {
       id: 3,
       description: "Cabo",
       price: "30",
-      width: 10,
-      height: 10,
-      length: 10,
-      weight: 1,
     },
   ];
 
@@ -43,8 +31,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Cart />
       <main className={styles.main}>
-        <Cart />
         <div className={styles.grid}>
           {products.map((p) => (
             <ItemCard
