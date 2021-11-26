@@ -13,7 +13,7 @@ interface Product {
 }
 
 interface Cart {
-  products?: Product[];
+  products: Product[];
   addProduct(product: Product): any;
   removeProduct(productId: number): any;
 }
@@ -25,7 +25,18 @@ const CartContext: Context<Cart> = createContext<Cart>({
 });
 
 export const CartProvider = (props: Partial<ProviderProps<Cart>>) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([
+    {
+      id: 1,
+      name: "Guitarra",
+      price: 3000,
+    },
+    {
+      id: 2,
+      name: "Amplificador",
+      price: 5000,
+    },
+  ]);
   const { children } = props;
 
   const addProduct = (product: Product) => {

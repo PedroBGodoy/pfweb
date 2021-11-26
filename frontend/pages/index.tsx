@@ -1,28 +1,23 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import ItemCard from "../components/item-card";
 import CartComponent from "../components/cart";
+import getItems from "../lib/api/item/get-items";
 
-const Home: NextPage = () => {
-  const products = [
+interface ProductPageProps {
+  products: [
     {
-      id: 1,
-      description: "Guitarra",
-      price: "1000",
-    },
-    {
-      id: 2,
-      description: "Amplificador",
-      price: "5000",
-    },
-    {
-      id: 3,
-      description: "Cabo",
-      price: "30",
-    },
+      id: number;
+      name: string;
+      price: number;
+    }
   ];
+}
+
+const Home: NextPage<ProductPageProps> = (props) => {
+  const { products } = props;
 
   return (
     <div className={styles.container}>
@@ -47,7 +42,7 @@ const Home: NextPage = () => {
             <ItemCard
               key={p.id}
               productId={p.id}
-              productName={p.description}
+              productName={p.name}
               productPrice={Number(p.price)}
             />
           ))}
@@ -55,6 +50,13 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const products = await getItems();
+  return {
+    props: { products },
+  };
 };
 
 export default Home;
