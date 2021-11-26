@@ -28,7 +28,7 @@ export default class RoutesConfig {
 
     this.http.on("post", "/orders", async (params: any, body: any) => {
       const placeOrder = new PlaceOrder(this.repositoryFactory);
-      body.issueDate = new Date(body.issueDate);
+      body.issueDate = body.issueDate ? new Date(body.issueDate) : new Date();
       const order = await placeOrder.execute(body);
       return order;
     });
