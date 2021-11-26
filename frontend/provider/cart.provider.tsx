@@ -8,6 +8,8 @@ import {
 
 interface Product {
   id: number;
+  price: number;
+  name: string;
 }
 
 interface Cart {
@@ -36,9 +38,7 @@ export const CartProvider = (props: Partial<ProviderProps<Cart>>) => {
   };
 
   return (
-    <CartContext.Provider
-      value={{ products, addProduct, removeProduct }}
-    >
+    <CartContext.Provider value={{ products, addProduct, removeProduct }}>
       {children}
     </CartContext.Provider>
   );

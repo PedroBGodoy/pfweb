@@ -1,5 +1,6 @@
-import { useCartContext } from "../provider/cart.provider";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/product-card.module.css";
+import Link from "next/link";
+import AddToCartBtn from "./buy-btn";
 
 interface ItemCardProps {
   productId: number;
@@ -8,21 +9,21 @@ interface ItemCardProps {
 }
 
 const ItemCard = (props: ItemCardProps) => {
-  const cart = useCartContext();
-
-  const addToCart = () => {
-    cart.addProduct({
-      id: props.productId,
-    });
-  };
-
   return (
     <div className={styles.card}>
-      <h2>{props.productName}</h2>
-      <p>R$ {props.productPrice}</p>
-      <button className={styles.add_btn} onClick={addToCart}>
-        COMPRAR
-      </button>
+      <Link href={`/product/${props.productId}`} passHref>
+        <div className={styles.body}>
+          <h2>{props.productName}</h2>
+          <p>R$ {props.productPrice}</p>
+        </div>
+      </Link>
+      <AddToCartBtn
+        product={{
+          id: props.productId,
+          name: props.productName,
+          price: props.productPrice,
+        }}
+      />
     </div>
   );
 };

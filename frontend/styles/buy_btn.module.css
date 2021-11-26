@@ -1,0 +1,13 @@
+.add_btn {
+  margin-top: 20px;
+  height: 40px;
+  width: 200px;
+  border: none;
+  font-weight: 700;
+}
+
+.add_btn:hover {
+  background-color: black;
+  color: #eaeaea;
+  cursor: pointer;
+}
