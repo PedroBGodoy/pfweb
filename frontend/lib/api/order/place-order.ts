@@ -7,6 +7,7 @@ interface PlaceOrderInput {
 }
 
 const placeOrder = async (input: PlaceOrderInput) => {
+  const baseUrl = process.env.NEXT_PUBLIC_ECOMMERCE_BACKEND_HOST;
   const requestConfig = {
     method: "POST",
     body: JSON.stringify(input),
@@ -14,7 +15,7 @@ const placeOrder = async (input: PlaceOrderInput) => {
       "Content-Type": "application/json",
     },
   };
-  const response = await fetch(`http://localhost:3001/orders`, requestConfig);
+  const response = await fetch(`${baseUrl}/orders`, requestConfig);
   const data = await response.json();
   return {
     code: data.code,

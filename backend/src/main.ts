@@ -6,4 +6,5 @@ const http = new ExpressHttp();
 const repositoryFactory = new DatabaseRepositoryFactory();
 const routesConfig = new RoutesConfig(http, repositoryFactory);
 routesConfig.build();
-http.listen(3001);
+const port = process.env.PORT || 3000;
+http.listen(+port);

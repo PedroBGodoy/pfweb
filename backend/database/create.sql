@@ -1,3 +1,5 @@
+create database app;
+\c app
 create schema pfweb;
 
 create table pfweb.item (

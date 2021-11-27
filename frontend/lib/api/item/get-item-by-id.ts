@@ -1,5 +1,6 @@
 const getItemById = async (id: number) => {
-  const response = await fetch(`http://localhost:3001/items/${id}`);
+  const baseUrl = process.env.NEXT_PUBLIC_ECOMMERCE_BACKEND_HOST;
+  const response = await fetch(`${baseUrl}/items/${id}`);
   const data = await response.json();
   return {
     id: data.id,
